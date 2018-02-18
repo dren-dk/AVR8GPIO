@@ -186,3 +186,9 @@ if (GPREAD(GPF3)) {
 }
 ```
 even if you never plan to port the code to another board.
+
+
+# How to use avr8gpio.h
+
+Grab the avr8pio.h file and stick it in your project and use it as suggested
+above.
