@@ -149,7 +149,7 @@ The entire point of avr8gpio.h is to make it tidy to define constants for
 pointing out GPIO pins in a central location of the code. My projects
 contain a file called board.h which might look something like this:
 
-'''
+```
 #pragma once
 #include "avr8gpio.h"
 
@@ -167,8 +167,22 @@ contain a file called board.h which might look something like this:
   #error BOARD_VERSION not defined
 #endif
 
-'''
+```
 
 This means that my code never has direct references to the GPxy constants
-outside the board.h file, so it's easy to see what the code is actually doing.
+outside the board.h file, so it's easy to see what the code is actually doing,
+because this is much easier to undertand:
 
+```
+if (GPREAD(SENSOR)) {
+   GPSET(LED);
+}
+```
+
+than this:
+```
+if (GPREAD(GPF3)) {
+   GPSET(GPA7);
+}
+```
+even if you never plan to port the code to another board.
